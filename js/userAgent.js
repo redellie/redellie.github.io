@@ -28,7 +28,7 @@
     }
     // Layer 彈窗
     function detectAppLayer() {
-      var index = layer.open({
+      layer.open({
         type: 1,
         id: 'detectAppLayer',
         title: false,
