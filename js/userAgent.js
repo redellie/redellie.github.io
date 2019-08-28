@@ -12,7 +12,7 @@
     if ( Boolean(u.match(regex)) ) {
       detectApp() // 是APP
       $('body').css('opacity', 1);
-      $('#detectAppButton').trigger('click', detectAppLayer());
+      detectAppLayer()
     } else {
       detectNotApp() // 不是APP
       $('body').css('opacity', 1);
