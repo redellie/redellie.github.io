@@ -372,15 +372,15 @@
   
         // 判斷是不是APP
         if (Boolean(u.match(regex))) {
-          document.getElementById('detectAppContent').classList.add("active"); // 彈窗顯示
+          tanchuang.classList.add("active"); // 彈窗顯示
         } else {
-          document.getElementById('detectAppContent').classList.remove("active"); // 彈窗不顯示
+          tanchuang.classList.remove("active"); // 彈窗不顯示
         }
         body.style.opacity = "1";
   
         // 隨處點擊關閉彈窗
         document.addEventListener("click", function () {
-          document.getElementById('detectAppContent').classList.remove("active"); // 彈窗不顯示
+          tanchuang.classList.remove("active"); // 彈窗不顯示
         })
       })();
     </script>
