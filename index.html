@@ -7,8 +7,51 @@
   <link rel="shortcut icon" href="img/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="js/jquery.min.js"></script>
-  <script src="layer/layer.js"></script>
+  
+  <script>
+   (function() {
+  var u = navigator.userAgent;
+  var ua = navigator.userAgent.toLowerCase();
+  var app = navigator.appVersion; // APP 內建瀏覽器
+  var rules = ['WebView','(iPhone|iPod|iPad)(?!.*Safari\/)','Android.*(wv|\.0\.0\.0)'];
+  var regex = new RegExp(`(${rules.join('|')})`, 'ig');
+  var body = document.getElementsByTagName("BODY")[0];
+  var userAgent = document.querySelector('.userAgent');
+  var appVersion = document.querySelector('.appVersion');
+  var boolean = document.querySelector('.boolean');
+  var tanchuang = document.querySelector('#detectAppContent');
+  
+  // 印上 navigator 資料
+  userAgent.innerHTML = u;
+  appVersion.innerHTML = app;
+  
+  // 判斷是不是APP
+  if ( Boolean(u.match(regex)) ) {
+    detectApp(); // 是APP
+    body.style.opacity = "1";
+    tanchuang.classList.add("active"); // 彈窗顯示
+  } else {
+    detectNotApp(); // 不是APP
+    body.style.opacity = "1";
+  }
+  
+  // 是APP
+  function detectApp() {
+    boolean.innerHTML = '是啦 甭懷疑';
+  }
+  // 不是APP
+  function detectNotApp() {
+    boolean.innerHTML = '就跟你說不是8';
+  }
+  
+  // 隨處點擊關閉彈窗
+  document.addEventListener("click", function(){
+    // tanchuang.fadeOut(500);
+    tanchuang.classList.remove("active"); // 彈窗不顯示
+  })
+})();
+    </script>
+  
 
 </head>
 <style>
@@ -272,31 +315,37 @@
 
   #detectAppContent {
   text-align: center;
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   color: #FFF;
-  
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: all .5s ease;
+  opacity: 0;
+  pointer-events: none;
 }
-  #detectAppContent h2 {
-    text-align: center;
-  }
+#detectAppContent.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+#detectAppContent img {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
 
-  .layui-layer {
-    animation: none !important;
-    background-color: transparent !important;
-  }
-
-  .layui-layer-setwin {
-    display: none !important;
-  }
-
-  #detectAppButton {
-    display: none;
-  }
 </style>
 
 <body>
+  
 
   <div id="download-app2">
    
@@ -344,13 +393,17 @@
       </section>
      
     </div>
-    <div id="detectAppContent">
-        <img src="img/browser.png" alt="">
-      </div>
-  <script src="js/userAgent.js"></script>
+  
+  
   
 
   </div>
+  <!-- 彈窗位置 -->
+  <div id="detectAppContent">
+      <img src="img/usermobile.png" width="60%" alt="">
+    </div>
+  
+   
 
 
  
