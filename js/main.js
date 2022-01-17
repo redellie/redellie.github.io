@@ -15,14 +15,13 @@ $(window).scroll(function() {
 
   if ($(window).scrollTop() >= $('.personal-profile').offset().top) {
     $('header').addClass('fixed');
-    $('.menu-s').addClass('fixed')/*.css('top','56px')*/;
+   
     $('.profile').addClass('here');
     $('.resume').removeClass('here');
     $('.slider').css('margin-left','0');
     $('.intro').fadeIn(2000);
   } else {
-    $('header').removeClass('fixed');
-    $('.menu-s').removeClass('fixed');
+
     $('.profile').removeClass('here');
     $('.resume').removeClass('here');
   }
@@ -31,7 +30,7 @@ $(window).scroll(function() {
 
 $(window).scroll(function() {
 
-  if($(window).scrollTop() >= $('.resume-wrap').offset().top){
+  if($(window).scrollTop() >= $('.resume-wrap').offset().top-100){
     $('.resume-article').slideDown(1500);
     $('.sub-title').delay(1500).css('margin-left','0');
     $('.resume').addClass('here');
@@ -43,7 +42,7 @@ $(window).scroll(function() {
 
 $(window).scroll(function() {
 
-  if($(window).scrollTop() >= $('.skill-wrap').offset().top){
+  if($(window).scrollTop() >= $('.skill-wrap').offset().top - 100){
     $('#bar-1').delay(1000).css('height', '290px');
     $('#bar-2').delay(1000).css('height', '350px');
     $('#bar-3').delay(1000).css('height', '200px');
@@ -77,23 +76,6 @@ $(window).scroll(function() {
     $('.portfolio').removeClass('here');
   }
 });
-
-//圖片輪播
-
-  $('.slider').slick({
-    arrows: false,
-    dots: true,
-    fade: true,
-    infinite: true,
-    autoplay: true,
-    speed: 2000,
-  });
-
-// 手機版menu
-
-  $('.phone-bar').click(function(){
-    $('.menu-s').slideToggle();
-  });
 
 // 文字閃爍
 
